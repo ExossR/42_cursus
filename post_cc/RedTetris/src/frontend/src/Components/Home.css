@@ -1,0 +1,14 @@
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.blinking-text {
+    animation: blink 2s linear infinite;
+    font-size: 5em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    cursor: default;
+}

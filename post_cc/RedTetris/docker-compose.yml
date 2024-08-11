@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: ./src/backend
+    restart: always
+    volumes:
+      - type: bind
+        source: ./src/backend
+        target: /app
+    ports:
+      - "3000:3000"
+    networks:
+      - redtetrisNetwork
+    container_name: redtetris_backend
+
+  frontend:
+    build:
+      context: ./src/frontend
+    restart: always
+    volumes:
+      - type: bind
+        source: ./src/frontend
+        target: /app
+    ports:
+      - "8888:8888"
+    environment:
+      - PORT=8888
+    networks:
+      - redtetrisNetwork
+    depends_on:
+      - backend
+    container_name: redtetris_frontend
+
+networks:
+  redtetrisNetwork:
