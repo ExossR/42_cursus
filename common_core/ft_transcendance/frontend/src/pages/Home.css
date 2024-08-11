@@ -1,0 +1,203 @@
+.container-grid {
+  /*display: grid;*/
+  grid-template-columns: 300px 300px 300px;
+  gap: 50px;
+  margin-top: 3%;
+  justify-content: center;
+  align-items: center;
+}
+
+@font-face {
+  font-family: "Dela";
+  src: url("../fonts/DelaGothicOne-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "VT";
+  src: url("../fonts/VT323-Regular.ttf") format("truetype");
+}
+
+@media (max-width: 768px) {
+  .content {
+    width: 100%;
+  }
+}
+
+.container-home {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  /*grid-template-rows:300px 200px;*/
+  gap: 50px;
+  margin-top: 3%;
+  justify-content: center;
+  /*align-items: center;*/
+}
+.container0 {
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  font-size: 20px;
+  font-family: "Dela";
+  /*color: #E9C482;*/
+  /*color: #fcba28;*/
+  color: #f9f4da;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.container0:hover {
+  transform: scale(1.1);
+}
+
+/*PONG GAME*/
+.container-1 {
+  width: 280px;
+  height: 250px;
+  background-image: url('../../public/pong.svg');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-color: #231f20;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.3);
+  background-position: center;
+  grid-row: 1;
+  grid-column: 2;
+}
+.container-1:hover, .container-2:hover, .container-3:hover, .container-4:hover, .container-5:hover {
+  color: #f088a0;
+  background-color: #f9f4da;
+}
+
+/*TIC TAC TOE*/
+.container-2 {
+  width: 280px;
+  height: 250px;
+  background-image: url('../../public/tictactoe.svg');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-color: #231f20;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.3);
+  background-position: center;
+  grid-row: 2;
+  justify-self: center;
+}
+
+.container-3 {
+  width: 280px;
+  height: 250px;
+  background-image: url('../../public/trophy.svg');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  /*background-color: #231f20;*/
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.3);
+  background-position: center;
+  grid-row: 2;
+}
+
+.container-4 {
+  width: 280px;
+  height: 250px;
+  background-image: url('../../public/profile.svg');
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-color: #231f20;
+   background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.3);
+  background-position: center;
+  grid-row: 2;
+}
+
+
+.container-5 {
+  width: 280px;
+  height: 250px;
+  background-image: url('../../public/settings.svg');
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-color: #231f20;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.3);
+  background-position: center;
+  grid-row: 2;
+}
+
+.warning-container{
+  display:flex;
+  align-items:left;
+  background-color: white;
+  background-position: center;
+  border-radius: 2.5%;
+  height: 5vw;
+  width:20vw;
+  justify-self: center;
+  margin:5%;
+  grid-row: 3;
+  grid-column: 2;
+  font-family: Arial, Helvetica, sans-serif;
+  padding:1%;
+}
+
+.warning-logo{
+  background-image: url('../../public/warning1.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-color: rgba(255, 255, 255, 0);
+  height:4vw;
+  width:10vw;
+}
+
+.warning-container p {
+  margin: 3px;
+  margin-top: 2%;
+}
+
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+  text-decoration: none;
+  text-shadow: none;
+  width: 250px;
+  height: 250px;
+  margin: auto;
+}
+
+.blinking-text {
+  font-family: "VT";
+  /*color: #f1b228; JAUNE*/
+  color: #f9f4da;
+  font-size: 180px;
+  animation: blink 1s infinite alternate;
+  grid-column: 2;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
