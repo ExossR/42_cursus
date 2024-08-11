@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  ubuntu:
+    build: .
+    image: ubuntu_image
+    container_name: level_02
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    network_mode: host
+
