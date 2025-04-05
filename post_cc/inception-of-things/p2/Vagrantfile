@@ -1,0 +1,16 @@
+# Version VBox 7.0
+# Version Vagrant 2.4.1
+Vagrant.configure(2) do |config|
+    config.vm.box = "ubuntu/jammy64"
+
+    config.vm.define "asahonetS" do |server|
+        server.vm.hostname = "asahonetS"
+        server.vm.network "private_network", ip: "192.168.56.110", interface: "eth1"
+        server.vm.provider "virtualbox" do |v|
+            v.name = "asahonetS"
+            v.memory = 2048
+            v.cpus = 4
+        end
+        server.vm.provision "shell", path: "scripts/server.sh"
+    end
+end

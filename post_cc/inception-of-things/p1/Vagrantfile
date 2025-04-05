@@ -1,0 +1,61 @@
+Vagrant.configure("2") do |config|
+# 2 is for the vagrant version
+# config is a variable name (for a vagrant object ?), which will be used everywhere in this file
+  username = "nstoutze"  # then remind to properly name the VM username ; env variable may be prefered here
+  # The same way, other variables can be defined here:
+  # - pnw_name = "private_network"
+  # - server_ip = "192.168.56.110"
+  # - worker_ip = "192.168.56.111"
+
+  config.vm.synced_folder "./confs", "/vagrant_shared"
+  # like a docker volume ; just: why does the two dirname are different ? Would not be simpler to name identically ?
+  # the .gitignore is not useful here, and would be better at project root, with token among its ignored files
+
+  config.vm.provider "virtualbox" do |vb|
+  # the vm provider is virtualbox, with a kind of an alias (vb), used many times in this file
+    vb.memory = 1024
+    vb.cpus = 2
+  end
+
+  config.vm.define "#{username}S" do |server|
+  # first vm define: the server (which will also be a variable name used in this define bloc)
+  # define seems to be a method name of a vagrant object
+    server.vm.hostname = "#{username}S"
+    server.vm.provider "virtualbox" do |vb|
+    # As I read this line, the previous one (config.vm.provider "virtualbox" do |vb|)
+    # makes me ask a strange thing: is this previous line configs the VM the subject tells about ?:
+    # Chapter III
+    # General guidelines
+    # • The whole project has to be done in a virtual machine.
+    # No, that can't be that, because p1 is a directory independant from p2 and p3.
+    # So, what is the purpose of this previous line, and then this new one.
+    # I thought the previous one was to tell what will vm provider be, and then it is set for every VM.
+    # But if we must tell for each vm what is its provider, then what is the purpose of the previous line.
+
+    # This is in fact the only way to define a specific name for each VM.
+      vb.name = "#{username}S"
+    end
+
+    server.vm.box = "bento/debian-12"
+    server.vm.network "private_network", ip: "192.168.56.110"
+    # eth0 and eth1 are connection interfaces created by VirtualBox.
+    # As a private_network is defined, a second interface eth1 is created.
+    # eth0 is an interface created for each VM to allow them to access internet,
+    # however, eth0 does not allow VMs to communicate between them.
+    # eth1 allows VMs to communicate between them, but not with internet.
+
+    server.vm.provision "shell", path: "./scripts/server.sh", args: ['192.168.56.110']
+    # I wonder why this attribute is named provision
+  end
+
+  config.vm.define "#{username}SW" do |worker|
+    worker.vm.hostname = "#{username}SW"
+    worker.vm.provider "virtualbox" do |vb|
+      vb.name = "#{username}SW"
+    end
+
+    worker.vm.box = "bento/debian-12"
+    worker.vm.network "private_network", ip: "192.168.56.111"
+    worker.vm.provision "shell", path: "./scripts/server_worker.sh", args: ['192.168.56.110']
+  end
+end
