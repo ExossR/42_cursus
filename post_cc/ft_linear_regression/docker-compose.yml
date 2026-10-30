@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    image: ft_linear_regression_image
+    container_name: ft_linear_regression
+    environment:
+      - DISPLAY=unix${DISPLAY}
+      - XDG_RUNTIME_DIR=/tmp
+    volumes:
+      - ./output:/usr/src/app/output
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    privileged: true
